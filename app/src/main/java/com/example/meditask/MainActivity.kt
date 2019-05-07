@@ -3,6 +3,15 @@ package com.example.meditask
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.FragmentActivity
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.auth.api.signin.SignInAccount
+import com.google.android.gms.common.SignInButton
+import com.google.android.gms.tasks.Task
+import com.google.android.gms.common.api.ApiException
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,7 +57,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
-            val account = completedTask.getResult(ApiException::class.java)
+            Log.d("handle is called", "HANDLE")
             val intent = Intent(this, MapsActivity::class.java).apply {}
             startActivity(intent)
             //Data transmit through Bundle
