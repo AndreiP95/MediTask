@@ -1,7 +1,11 @@
 package com.example.meditask
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -9,10 +13,12 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.navigation.NavigationView
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
+    private lateinit var imageView : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +27,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        imageView = findViewById(R.id.hamburger_image)
+
+        imageView.setOnClickListener {
+            val intent = Intent(this, DrawerActivity::class.java).apply {}
+            startActivity(intent)
+        }
+
+
     }
 
     /**
@@ -36,7 +51,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val bucharest = LatLng(44.29,26.06)
+        val bucharest = LatLng(44.29, 26.06)
         mMap.addMarker(MarkerOptions().position(bucharest).title("Marker in Bucharest"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(bucharest))
     }

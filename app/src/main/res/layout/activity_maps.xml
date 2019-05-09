@@ -15,11 +15,14 @@
                   android:background="@color/colorAccent"
                   android:layout_height="50dp">
 
-        <ImageView android:layout_width="50dp"
-                   android:layout_height="30dp"
-                   android:visibility="visible"
-                   android:layout_gravity="start|center"
-                   android:src="@drawable/menuikona"
+        <ImageView
+                android:id = "@+id/hamburger_image"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:visibility="visible"
+                android:layout_gravity="start|center"
+                android:src="@drawable/menuikona"
+
         />
 
     </LinearLayout>
